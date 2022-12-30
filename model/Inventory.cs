@@ -70,7 +70,6 @@ namespace InventorySystem_EmilyCarter.model
             Products.Add(product1);
             Products.Add(product2);
             Products.Add(product3);
-            Products.Add(product3);
             Products.Add(product4);
             Products.Add(product5);
         }

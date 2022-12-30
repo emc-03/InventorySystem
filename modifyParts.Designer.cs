@@ -74,11 +74,11 @@ namespace InventorySystem_EmilyCarter
             // 
             this.modifyLabel.AutoSize = true;
             this.modifyLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.modifyLabel.Location = new System.Drawing.Point(12, 5);
+            this.modifyLabel.Location = new System.Drawing.Point(22, 5);
             this.modifyLabel.Name = "modifyLabel";
-            this.modifyLabel.Size = new System.Drawing.Size(90, 21);
+            this.modifyLabel.Size = new System.Drawing.Size(321, 21);
             this.modifyLabel.TabIndex = 2;
-            this.modifyLabel.Text = "Modify Part";
+            this.modifyLabel.Text = "Inventory Management System - Modify Part";
             this.modifyLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // radioInHouse
@@ -223,7 +223,7 @@ namespace InventorySystem_EmilyCarter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 392);
+            this.ClientSize = new System.Drawing.Size(392, 392);
             this.Controls.Add(this.labelCompName);
             this.Controls.Add(this.labelMax);
             this.Controls.Add(this.labelMin);
@@ -244,7 +244,8 @@ namespace InventorySystem_EmilyCarter
             this.Controls.Add(this.modPartSave);
             this.Controls.Add(this.cancelButton);
             this.Name = "modifyParts";
-            this.Text = "Modify Parts";
+            this.Text = "Inventory Management System - Modify Parts";
+            this.Load += new System.EventHandler(this.modifyParts_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

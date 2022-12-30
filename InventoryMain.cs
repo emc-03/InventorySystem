@@ -44,15 +44,19 @@ namespace InventorySystem_EmilyCarter
 
         private void Exit_Click(object sender, EventArgs e)
         {
-			Application.Exit();
-			//Create Message Box 
-			//MessageBox.Show("Are you sure you want to Exit?");
-			//if DiaglogBox = OK 
 
-			
+            DialogResult exitResult = MessageBox.Show("Do you want to Exit ?","Important",
+             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (exitResult == DialogResult.Yes)
+            {
+				this.Hide();
+				Application.Exit();
+			}
+         
         }
 
-        private void AddParts_Click(object sender, EventArgs e)
+		private void AddParts_Click(object sender, EventArgs e)
         {
             AddPart addPart = new AddPart();
 			addPart.Show();
@@ -111,7 +115,8 @@ namespace InventorySystem_EmilyCarter
 
         private void ModifyProducts_Click(object sender, EventArgs e)
         {
-            ModifyProduct modifyProducts = new ModifyProduct();
+			var product = (Product)dataProducts.CurrentRow.DataBoundItem;
+			ModifyProduct modifyProducts = new ModifyProduct(product);
 			modifyProducts.Show();
 
 			this.Hide();
@@ -211,6 +216,9 @@ namespace InventorySystem_EmilyCarter
 			}
 		}
 
-      
+        private void dataProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

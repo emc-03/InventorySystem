@@ -23,19 +23,108 @@ namespace InventorySystem_EmilyCarter
             Random rnd = new Random();
             int partID = rnd.Next(1000);
 
+            
+            string partName;
+            int machineid;
+            int max;
+            int min;
+            int instock;
+            decimal price;
+            decimal decimalTemp;
+            int intTemp;
+
+            if (string.IsNullOrWhiteSpace(textName.Text))
+            {
+                MessageBox.Show("Type in name of part.");
+                textName.Clear();
+                textName.Focus();
+                return;
+            }
+            else
+            {
+                partName = textName.Text;
+            }
+
+            if (!Int32.TryParse(machineNameID.Text, out intTemp))
+            {
+                MessageBox.Show("Type in an integer for the machine ID");
+                machineNameID.Clear();
+                machineNameID.Focus();
+                return;
+            }
+            else
+            {
+                machineid = int.Parse(machineNameID.Text);
+            }
+
+            if (!Int32.TryParse(textMax.Text, out intTemp))
+            {
+                MessageBox.Show("Please type in an integer");
+                textMax.Clear();
+                textMax.Focus();
+                return;     
+
+            }
+            else
+            {
+                max = int.Parse(textMax.Text);
+            }
+
+            if (!Int32.TryParse(textMin.Text, out intTemp))
+            {
+                MessageBox.Show("Please type in an integer");
+                textMin.Clear();
+                textMin.Focus();
+                return;
+
+            }
+            else
+            {
+                min = int.Parse(textMin.Text);
+            }
+
+            if (!Int32.TryParse(textInventory.Text, out intTemp))
+            {
+                MessageBox.Show("Please type in an integer");
+                textInventory.Clear();
+                textInventory.Focus();
+                return;
+
+            }
+            else
+            {
+                instock = int.Parse(textInventory.Text);
+            }
+            if (!decimal.TryParse(textPrice.Text, out decimalTemp))
+            {
+                MessageBox.Show("Please type in an integer");
+                textPrice.Clear();
+                textPrice.Focus();
+                return;
+
+            }
+            else
+            {
+                price = int.Parse(textPrice.Text);
+            }
+
+
+
+
             if (radioInHouse.Checked)
             {
                 int machineID = int.Parse(machineNameID.Text);
 
+
                 var inhousePart = new Inhouse
                 {
                     PartID = partID,
-                    Name = textName.Text,
-                    MachineID = int.Parse(machineNameID.Text),
-                    Max = int.Parse(textMax.Text),
-                    Min = int.Parse(textMin.Text),
-                    InStock = int.Parse(textInventory.Text),
-                    Price = decimal.Parse(textPrice.Text)
+                    Name = partName,
+                    MachineID = machineid,
+                    Max = max,
+                    Min = min,
+                    InStock = instock,
+                    Price = price   
                 };
                 Inventory.AddPart(inhousePart);
             }
@@ -115,6 +204,11 @@ namespace InventorySystem_EmilyCarter
         }
 
         private void AddPart_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -139,6 +139,7 @@ namespace InventorySystem_EmilyCarter
             this.addPart.TabIndex = 10;
             this.addPart.Text = "Add";
             this.addPart.UseVisualStyleBackColor = true;
+            this.addPart.Click += new System.EventHandler(this.addPart_Click);
             // 
             // deletePart
             // 
@@ -218,11 +219,11 @@ namespace InventorySystem_EmilyCarter
             // 
             this.addProdLabel.AutoSize = true;
             this.addProdLabel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.addProdLabel.Location = new System.Drawing.Point(24, 30);
+            this.addProdLabel.Location = new System.Drawing.Point(9, 5);
             this.addProdLabel.Name = "addProdLabel";
-            this.addProdLabel.Size = new System.Drawing.Size(134, 30);
+            this.addProdLabel.Size = new System.Drawing.Size(457, 30);
             this.addProdLabel.TabIndex = 24;
-            this.addProdLabel.Text = "Add Product";
+            this.addProdLabel.Text = "Inventory Management System - Add Product";
             // 
             // labelPartsAssociated
             // 
@@ -245,7 +246,7 @@ namespace InventorySystem_EmilyCarter
             // productSearch
             // 
             this.productSearch.Location = new System.Drawing.Point(476, 30);
-            this.productSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productSearch.Margin = new System.Windows.Forms.Padding(2);
             this.productSearch.Name = "productSearch";
             this.productSearch.Size = new System.Drawing.Size(78, 20);
             this.productSearch.TabIndex = 27;
@@ -257,7 +258,7 @@ namespace InventorySystem_EmilyCarter
             // 
             this.partsAssociatedProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.partsAssociatedProduct.Location = new System.Drawing.Point(434, 311);
-            this.partsAssociatedProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.partsAssociatedProduct.Margin = new System.Windows.Forms.Padding(2);
             this.partsAssociatedProduct.Name = "partsAssociatedProduct";
             this.partsAssociatedProduct.RowHeadersWidth = 62;
             this.partsAssociatedProduct.RowTemplate.Height = 33;
@@ -294,7 +295,7 @@ namespace InventorySystem_EmilyCarter
             this.Controls.Add(this.productSave);
             this.Controls.Add(this.cancelButton);
             this.Name = "AddProducts";
-            this.Text = "Add Products";
+            this.Text = "Inventory Management System - Add Products";
             this.Load += new System.EventHandler(this.AddProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AllPartsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.partsAssociatedProduct)).EndInit();

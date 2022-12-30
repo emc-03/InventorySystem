@@ -63,6 +63,92 @@ namespace InventorySystem_EmilyCarter
             Random rnd = new Random();
             int partID = rnd.Next(1000);
 
+          
+            string partName;
+            int machineid;
+            int max;
+            int min;
+            int instock;
+            decimal price;
+            decimal decimalTemp;
+            int intTemp;
+
+            if (string.IsNullOrWhiteSpace(textName.Text))
+            {
+                MessageBox.Show("Type in name of part.");
+                textName.Clear();
+                textName.Focus();
+                return;
+            }
+            else
+            {
+                partName = textName.Text;
+            }
+
+
+            if (!Int32.TryParse(textID.Text, out intTemp))
+            {
+                MessageBox.Show("Type in an integer for the machine ID");
+                textID.Clear();
+                textID.Focus();
+                return;
+            }
+            else
+            {
+                machineid = int.Parse(textID.Text);
+            }
+
+            if (!Int32.TryParse(textMax.Text, out intTemp))
+            {
+                MessageBox.Show("Type in an Integer.");
+                textMax.Clear();
+                textMax.Focus();
+                return;
+            }
+            else
+            {
+                max = int.Parse(textMax.Text);
+            }
+
+            if (!Int32.TryParse(textMin.Text, out intTemp))
+            {
+                MessageBox.Show("Type in an Integer.");
+                textMin.Clear();
+                textMin.Focus();
+                return;
+            }
+            else
+            {
+                min = int.Parse(textMin.Text);
+            }
+
+
+            if (!Int32.TryParse(textInventory.Text, out intTemp))
+            {
+                MessageBox.Show("Type in an Integer.");
+                textInventory.Clear();
+                textInventory.Focus();
+                return;
+            }
+            else
+            {
+                instock = int.Parse(textInventory.Text);
+            }
+
+            if (!decimal.TryParse(textPrice.Text, out decimalTemp))
+            {
+                MessageBox.Show("Type in a decimal number.");
+                textPrice.Clear();
+                textPrice.Focus();
+                return;
+            }
+            else
+            {
+                price = decimal.Parse(textPrice.Text);
+            }
+
+
+
             if (radioInHouse.Checked)
             {
                 int machineID = int.Parse(textCompanyName.Text);
@@ -119,6 +205,11 @@ namespace InventorySystem_EmilyCarter
         private void Outsourced_CheckedChanged(object sender, EventArgs e)
         {
             labelCompName.Text = "Company Name";
+        }
+
+        private void modifyParts_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
