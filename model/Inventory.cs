@@ -13,7 +13,7 @@ namespace InventorySystem_EmilyCarter.model
         public static BindingList<Product> Products = new BindingList<Product>();
         public static BindingList<Part> AllParts = new BindingList<Part>();
         private static int ProductID;
-
+        // TODO adjust price to decimal
         
         public static void addDataProducts() {
 
@@ -21,7 +21,7 @@ namespace InventorySystem_EmilyCarter.model
             Product product1 = new Product
             {
                 ProductID = 1,
-                Name = "One",
+                Name = "Jeep",
                 Price = 3,
                 InStock = 5,
                 Max = 2,
@@ -31,7 +31,7 @@ namespace InventorySystem_EmilyCarter.model
             Product product2 = new Product
             {
                 ProductID = 2,
-                Name = "Two",
+                Name = "Truck",
                 Price = 5,
                 InStock = 6,
                 Max = 4,
@@ -41,7 +41,7 @@ namespace InventorySystem_EmilyCarter.model
             Product product3 = new Product
             {
                 ProductID = 3,
-                Name = "Three",
+                Name = "Sedan",
                 Price = 7,
                 InStock = 8,
                 Max = 6,
@@ -50,7 +50,7 @@ namespace InventorySystem_EmilyCarter.model
             }; Product product4 = new Product
             {
                 ProductID = 4,
-                Name = "Four",
+                Name = "Van",
                 Price = 9,
                 InStock = 10,
                 Max = 8,
@@ -60,7 +60,7 @@ namespace InventorySystem_EmilyCarter.model
             Product product5 = new Product
             {
                 ProductID = 5,
-                Name = "Five",
+                Name = "Coupe",
                 Price = 11,
                 InStock = 12,
                 Max = 10,
@@ -75,11 +75,12 @@ namespace InventorySystem_EmilyCarter.model
         }
 
         public static void addDataParts() {
+            //TODO Rename parts to make easier to read
 
             Part part1 = new Inhouse
             {
                 PartID = 1,
-                Name = "Part One", 
+                Name = "Wheel", 
                 MachineID = 22, 
                 InStock = 5,
                 Max = 20, 
@@ -89,7 +90,7 @@ namespace InventorySystem_EmilyCarter.model
             Part part2 = new Inhouse
             {
                 PartID = 2,
-                Name = "Part Two",
+                Name = "Door",
                 MachineID = 33,
                 InStock = 10,
                 Max = 50,
@@ -100,7 +101,7 @@ namespace InventorySystem_EmilyCarter.model
             Part part3 = new Inhouse { 
             
                  PartID = 3,
-                 Name = "Part Three",
+                 Name = "Window",
                  MachineID = 44,
                  InStock = 15,
                  Max = 55,
@@ -112,7 +113,7 @@ namespace InventorySystem_EmilyCarter.model
             Part part4 = new Inhouse
             {
                 PartID = 4,
-                Name = "Part Four",
+                Name = "Battery",
                 MachineID = 55,
                 InStock = 20,
                 Max = 66,
@@ -124,7 +125,7 @@ namespace InventorySystem_EmilyCarter.model
             Part part5 = new Inhouse
             {
                 PartID = 5,
-                Name = "Part Five",
+                Name = "Key",
                 MachineID = 66,
                 InStock = 20,
                 Max = 77,
@@ -136,8 +137,8 @@ namespace InventorySystem_EmilyCarter.model
             Part outSourced1 = new Outsourced
             {
                 PartID = 1,
-                Name = "One",
-                CompanyName = "Tuple",
+                Name = "Axel",
+                CompanyName = "Steel Machines",
                 InStock = 1,
                 Max = 20,
                 Min = 0,
@@ -146,8 +147,8 @@ namespace InventorySystem_EmilyCarter.model
             Part outSourced2 = new Outsourced
             {
                 PartID = 2,
-                Name = "Two",
-                CompanyName = "Aspire",
+                Name = "Oil Pan",
+                CompanyName = "Shell",
                 InStock = 2,
                 Max = 30,
                 Min = 0,
@@ -157,8 +158,8 @@ namespace InventorySystem_EmilyCarter.model
             Part outSourced3 = new Outsourced
             {
                 PartID = 3,
-                Name = "Three",
-                CompanyName = "Shell",
+                Name = "Headlight",
+                CompanyName = "Stop N Go Supplies",
                 InStock = 3,
                 Max = 40,
                 Min = 0,
@@ -168,8 +169,8 @@ namespace InventorySystem_EmilyCarter.model
             Part outSourced4 = new Outsourced
             {
                 PartID = 4,
-                Name = "Four",
-                CompanyName = "Switch",
+                Name = "Air Filter",
+                CompanyName = "Filter Technologies",
                 InStock = 4,
                 Max = 50,
                 Min = 0,
@@ -179,8 +180,8 @@ namespace InventorySystem_EmilyCarter.model
             Part outSourced5 = new Outsourced
             {
                 PartID = 5,
-                Name = "Five",
-                CompanyName = "Clever",
+                Name = "Radiator",
+                CompanyName = "Auto Realm",
                 InStock = 5,
                 Max = 60,
                 Min = 0,
@@ -231,13 +232,17 @@ namespace InventorySystem_EmilyCarter.model
             return null;
         }
 
-      public static void UpdateProduct(int productID, Product productName)
+      public static void UpdateProduct(int productID, string productName, decimal price, int inStock, int max, int min)
         {
             for (int i = 0; i < Products.Count; i++)
             {
                 if (Products[i].ProductID == productID)
                 {
-                    Products[i] = productName;
+                    Products[i].Name = productName;
+                    Products[i].Price = price;
+                    Products[i].InStock = inStock;
+                    Products[i].Max = max;
+                    Products[i].Min = min;
                 }
             }
         }
@@ -266,14 +271,17 @@ namespace InventorySystem_EmilyCarter.model
 
             return null;
         }
-     public static void updatePart(int partID, Part partName)
+       
+        public static void updatePart(int partID, Part part)
+                     
         {
             for (int i = 0; i < AllParts.Count; i++)
             {
                 if (AllParts[i].PartID == partID)
                 {
-                    AllParts[i] = partName;
+                  AllParts[i] = part;
                 }
+             
             }
         }
 

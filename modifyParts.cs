@@ -1,4 +1,5 @@
-﻿using InventorySystem_EmilyCarter.model;
+﻿using InventorySystem_EmilyCarter.helper;
+using InventorySystem_EmilyCarter.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,12 @@ namespace InventorySystem_EmilyCarter
 {
     public partial class modifyParts : Form
     {
+        private int modPartID;
+
         public modifyParts()
         {
             InitializeComponent();
+
         }
 
 
@@ -24,6 +28,7 @@ namespace InventorySystem_EmilyCarter
 
             InitializeComponent();
 
+            modPartID = part.PartID;
             textID.Text = part.PartID.ToString();
             textName.Text = part.Name;
             textInventory.Text = part.InStock.ToString();
@@ -59,15 +64,13 @@ namespace InventorySystem_EmilyCarter
         }
 
         private void modPartSave_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            int partID = rnd.Next(1000);
-
+        { 
           
+       
             string partName;
             int machineid;
-            int max;
-            int min;
+            int? max;
+            int? min;
             int instock;
             decimal price;
             decimal decimalTemp;
@@ -86,7 +89,7 @@ namespace InventorySystem_EmilyCarter
             }
 
 
-            if (!Int32.TryParse(textID.Text, out intTemp))
+            if (!int.TryParse(textID.Text, out intTemp))
             {
                 MessageBox.Show("Type in an integer for the machine ID");
                 textID.Clear();
@@ -98,34 +101,19 @@ namespace InventorySystem_EmilyCarter
                 machineid = int.Parse(textID.Text);
             }
 
-            if (!Int32.TryParse(textMax.Text, out intTemp))
+          
+            Validator validator = new Validator();
+            bool isValid;
+            validator.validateMinMax(textMin, textMax, out min, out max, out isValid);
+
+            if (!isValid)
             {
-                MessageBox.Show("Type in an Integer.");
-                textMax.Clear();
-                textMax.Focus();
                 return;
             }
-            else
-            {
-                max = int.Parse(textMax.Text);
-            }
 
-            if (!Int32.TryParse(textMin.Text, out intTemp))
+            if (!int.TryParse(textInventory.Text, out intTemp))
             {
-                MessageBox.Show("Type in an Integer.");
-                textMin.Clear();
-                textMin.Focus();
-                return;
-            }
-            else
-            {
-                min = int.Parse(textMin.Text);
-            }
-
-
-            if (!Int32.TryParse(textInventory.Text, out intTemp))
-            {
-                MessageBox.Show("Type in an Integer.");
+                MessageBox.Show("Type in an Integer for Inventory");
                 textInventory.Clear();
                 textInventory.Focus();
                 return;
@@ -134,10 +122,18 @@ namespace InventorySystem_EmilyCarter
             {
                 instock = int.Parse(textInventory.Text);
             }
+            if (instock < min || instock > max)
+            {
+                MessageBox.Show("Inventory must be within range");
+                textInventory.Clear();
+                textInventory.Focus();
+                return;
+
+            }
 
             if (!decimal.TryParse(textPrice.Text, out decimalTemp))
             {
-                MessageBox.Show("Type in a decimal number.");
+                MessageBox.Show("Type in a decimal number for Price");
                 textPrice.Clear();
                 textPrice.Focus();
                 return;
@@ -150,36 +146,49 @@ namespace InventorySystem_EmilyCarter
 
 
             if (radioInHouse.Checked)
-            {
-                int machineID = int.Parse(textCompanyName.Text);
+            { 
+                
+                if (!int.TryParse(textCompanyName.Text, out intTemp))
+                {
+                    MessageBox.Show("Type in an Integer for Machine ID.");
+                    textCompanyName.Clear();
+                    textCompanyName.Focus();
+                    return;
+                }
+                else
+                {
+                   int machineID = int.Parse(textCompanyName.Text);
+                }
 
                 var inhousePart = new Inhouse
                 {
-                    PartID = partID,
+                    PartID = int.Parse(textID.Text),
                     Name = textName.Text,
-                    MachineID = int.Parse(textCompanyName.Text),
-                    Max = int.Parse(textMax.Text),
-                    Min = int.Parse(textMin.Text),
-                    InStock = int.Parse(textInventory.Text),
-                    Price = decimal.Parse(textPrice.Text)
+                    MachineID = machineid,
+                    Max = max ?? 0,
+                    Min = min ?? 0,
+                    InStock = instock,
+                    Price = price
                 };
-                Inventory.AddPart(inhousePart);
+                Inventory.updatePart(modPartID,inhousePart);
+           
             }
             else
             {
 
                 var outsourced = new Outsourced
                 {
-                    PartID = partID,
+                    PartID = int.Parse(textID.Text),
                     Name = textName.Text,
                     CompanyName = textCompanyName.Text,
-                    Max = int.Parse(textMax.Text),
-                    Min = int.Parse(textMin.Text),
-                    InStock = int.Parse(textInventory.Text),
-                    Price = decimal.Parse(textPrice.Text)
+                    Max = max ?? 0,
+                    Min = min ?? 0,
+                    InStock = instock,
+                    Price = price
                 };
-                Inventory.AddPart(outsourced);
-              
+               
+                Inventory.updatePart(modPartID,outsourced);
+                    
             }
             InventoryMain inventoryMain = new InventoryMain();
             inventoryMain.Show();

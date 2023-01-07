@@ -11,33 +11,33 @@ using System.Windows.Forms;
 
 namespace InventorySystem_EmilyCarter
 {
-	public partial class InventoryMain : Form
-	{
+    public partial class InventoryMain : Form
+    {
         private BindingList<Part> listOfParts;
-		public InventoryMain()
-		{
-			InitializeComponent();
-		}
+        public InventoryMain()
+        {
+            InitializeComponent();
+        }
 
-		private void InventoryMain_Load(object sender, EventArgs e)
-		{
+        private void InventoryMain_Load(object sender, EventArgs e)
+        {
 
-			dataParts.DataSource = Inventory.AllParts;
-			dataProducts.DataSource = Inventory.Products;
-			dataParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			dataProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataParts.DataSource = Inventory.AllParts;
+            dataProducts.DataSource = Inventory.Products;
+            dataParts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-			dataParts.ReadOnly = true;
+            dataParts.ReadOnly = true;
             dataParts.MultiSelect = false;
             dataParts.AllowUserToAddRows = false;
 
-			dataProducts.ReadOnly = true;
-			dataProducts.MultiSelect = false;
-			dataProducts.AllowUserToAddRows = false;
+            dataProducts.ReadOnly = true;
+            dataProducts.MultiSelect = false;
+            dataProducts.AllowUserToAddRows = false;
         }
 
 
-		private void dataParts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataParts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -45,81 +45,82 @@ namespace InventorySystem_EmilyCarter
         private void Exit_Click(object sender, EventArgs e)
         {
 
-            DialogResult exitResult = MessageBox.Show("Do you want to Exit ?","Important",
+            DialogResult exitResult = MessageBox.Show("Do you want to Exit ?", "Important",
              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (exitResult == DialogResult.Yes)
             {
-				this.Hide();
-				Application.Exit();
-			}
-         
+                this.Hide();
+                Application.Exit();
+            }
+
         }
 
-		private void AddParts_Click(object sender, EventArgs e)
+        private void AddParts_Click(object sender, EventArgs e)
         {
             AddPart addPart = new AddPart();
-			addPart.Show();
+            addPart.Show();
 
-			this.Hide();
-		}
+            this.Hide();
+        }
 
-		private void Modify_Click(object sender, EventArgs e)
-		{
-			var selectedPart = (Part)dataParts.CurrentRow.DataBoundItem;
+        private void Modify_Click(object sender, EventArgs e)
+        {
+            var selectedPart = (Part)dataParts.CurrentRow.DataBoundItem;
 
-			modifyParts modify = new modifyParts(selectedPart);
-			modify.Show();
+            modifyParts modify = new modifyParts(selectedPart);
+            modify.Show();
 
-			this.Hide();
-		}
+            this.Hide();
+        }
 
-		private void DeleteParts_Click(object sender, EventArgs e)
+        private void DeleteParts_Click(object sender, EventArgs e)
         {
             if (dataParts.RowCount == 0)
             {
-				MessageBox.Show("No Parts To Delete");
-				return;
+                MessageBox.Show("No Parts To Delete");
+                return;
             }
 
             if (!dataParts.CurrentRow.Selected)
             {
-				MessageBox.Show("Current Row Not Selected");
-				return;
+                MessageBox.Show("Current Row Not Selected");
+                return;
             }
 
-			var selectedPart = (Part)dataParts.CurrentRow.DataBoundItem;
+            var selectedPart = (Part)dataParts.CurrentRow.DataBoundItem;
 
-			DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Important",
-			MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Important",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-		        Inventory.DeletePart(selectedPart);
+            if (deleteResult == DialogResult.Yes)
+            { Inventory.DeletePart(selectedPart); }
 
-			
-			}
 
-		private void bindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {	//clear selection
-			dataParts.ClearSelection();
+        }
+
+        private void bindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {   //clear selection
+            dataParts.ClearSelection();
         }
 
         private void AddProducts_Click(object sender, EventArgs e)
         {
-			AddProducts addProduct = new AddProducts();
-			addProduct.Show();
+            AddProducts addProduct = new AddProducts();
+            addProduct.Show();
 
-			this.Hide();
+            this.Hide();
         }
 
-     
+
 
         private void ModifyProducts_Click(object sender, EventArgs e)
         {
-			var product = (Product)dataProducts.CurrentRow.DataBoundItem;
-			ModifyProduct modifyProducts = new ModifyProduct(product);
-			modifyProducts.Show();
+            var product = (Product)dataProducts.CurrentRow.DataBoundItem;
+            ModifyProduct modifyProducts = new ModifyProduct(product);
+            modifyProducts.Show();
 
-			this.Hide();
+            this.Hide();
 
         }
 
@@ -132,30 +133,39 @@ namespace InventorySystem_EmilyCarter
                 return;
             }
 
-			if (!dataProducts.CurrentRow.Selected)
-			{
-				MessageBox.Show("Current Row Not Selected");
-				return;
-			}
+            if (!dataProducts.CurrentRow.Selected)
+            {
+                MessageBox.Show("Current Row Not Selected");
+                return;
+            }
 
-           Product selectedProduct = (Product)dataProducts.CurrentRow.DataBoundItem;
-			int productID = dataProducts.CurrentRow.Index;
+            Product selectedProduct = (Product)dataProducts.CurrentRow.DataBoundItem;
+            int productID = dataProducts.CurrentRow.Index;
+            if (selectedProduct.AssociatedParts.Count > 0)
+            {
+                MessageBox.Show("Cannot Delete because a Part is assigned");
+                return;
+            }
 
-			DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Important",
-			 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-			Inventory.RemoveProduct(productID);
-		}
+            DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Important",
+             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(deleteResult == DialogResult.Yes)
+            { 
+                Inventory.RemoveProduct(productID); 
+            }
+            
+        }
 
         private void mainProductSearch_Click(object sender, EventArgs e)
         {
-			string textValue = searchProductBox.Text.ToUpper();
-			bool flag = false;
+            string textValue = searchProductBox.Text.ToUpper();
+            bool flag = false;
 
-			dataProducts.ClearSelection();
+            dataProducts.ClearSelection();
 
             if (String.IsNullOrWhiteSpace(textValue))
             {
-				MessageBox.Show("Product not found");
+                MessageBox.Show("Product not found");
 
             }
             else
@@ -164,57 +174,57 @@ namespace InventorySystem_EmilyCarter
                 {
                     if (row.Cells["Name"].Value.ToString().ToUpper().Contains(textValue))
                     {
-						flag = true;
-						row.Selected = true;
-						break;
+                        flag = true;
+                        row.Selected = true;
+                        break;
                     }
                 }
 
-				if (!flag)
-				{
-					MessageBox.Show("No match found.");
-				}    
+                if (!flag)
+                {
+                    MessageBox.Show("No match found.");
+                }
             }
         }
-		private void searchProductBox_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-		private void searchPartBox_TextChanged(object sender, EventArgs e)
+        private void searchProductBox_TextChanged(object sender, EventArgs e)
         {
-			
-		}
+
+        }
+        private void searchPartBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void mainPartsSearch_Click(object sender, EventArgs e)
         {
-			string textValue = searchPartBox.Text.ToUpper();
-			bool flag = false;
+            string textValue = searchPartBox.Text.ToUpper();
+            bool flag = false;
 
-			dataParts.ClearSelection();
+            dataParts.ClearSelection();
 
-			if (String.IsNullOrWhiteSpace(textValue))
-			{
-				MessageBox.Show("Part not found");
+            if (String.IsNullOrWhiteSpace(textValue))
+            {
+                MessageBox.Show("Part not found");
 
-			}
-			else
-			{
-				foreach (DataGridViewRow row in dataParts.Rows)
-				{
-					if (row.Cells["Name"].Value.ToString().ToUpper().Contains(textValue))
-					{
-						flag = true;
-						row.Selected = true;
-						break;
-					}
-				}
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dataParts.Rows)
+                {
+                    if (row.Cells["Name"].Value.ToString().ToUpper().Contains(textValue))
+                    {
+                        flag = true;
+                        row.Selected = true;
+                        break;
+                    }
+                }
 
-				if (!flag)
-				{
-					MessageBox.Show("No match found.");
-				}
-			}
-		}
+                if (!flag)
+                {
+                    MessageBox.Show("No match found.");
+                }
+            }
+        }
 
         private void dataProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

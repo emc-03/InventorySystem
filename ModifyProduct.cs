@@ -1,4 +1,5 @@
-﻿using InventorySystem_EmilyCarter.model;
+﻿using InventorySystem_EmilyCarter.helper;
+using InventorySystem_EmilyCarter.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,8 +51,8 @@ namespace InventorySystem_EmilyCarter
             partsAssociatedProductView.MultiSelect = false;
             partsAssociatedProductView.AllowUserToAddRows = false;
         }
-
-        private void button3_Click(object sender, EventArgs e)
+       
+        private void modifySearch_Click(object sender, EventArgs e)
         {
             string textValue = modifySearchBox.Text.ToUpper();
             bool flag = false;
@@ -96,11 +97,11 @@ namespace InventorySystem_EmilyCarter
             this.Hide();
         }
 
-        private void modifyDelete_Click(object sender, EventArgs e)
+        private void modifyRemove_Click(object sender, EventArgs e)
         {
             if (partsAssociatedProductView.RowCount == 0)
             {
-                MessageBox.Show("No Parts To Delete");
+                MessageBox.Show("No Parts To Remove");
                 return;
             }
 
@@ -112,17 +113,17 @@ namespace InventorySystem_EmilyCarter
 
             var rowindex = partsAssociatedProductView.CurrentCell.RowIndex;
           
-            DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Important",
+            DialogResult removeResult = MessageBox.Show("Do you want to Remove?", "Important",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (deleteResult == DialogResult.Yes)
+            if (removeResult == DialogResult.Yes)
             {
                 partsAssociatedProductView.Rows.RemoveAt(rowindex);
-                MessageBox.Show("Part Deleted");
+                MessageBox.Show("Part Removed");
             }
             else
             {
-                MessageBox.Show("Part not deleted!");
+                MessageBox.Show("Part not Removed!");
             }
            
 
@@ -155,15 +156,15 @@ namespace InventorySystem_EmilyCarter
         }
 
         private void modifySave_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-            int partID = rnd.Next(1000);
 
+            
           
+        {
+                                 
             string partName;
             int machineid;
-            int max;
-            int min;
+            int? max;
+            int? min;
             int instock;
             decimal price;
             decimal decimalTemp;
@@ -181,7 +182,7 @@ namespace InventorySystem_EmilyCarter
                 partName = textName.Text;
             }
 
-            if (!Int32.TryParse(textID.Text, out intTemp))
+            if (!int.TryParse(textID.Text, out intTemp))
             {
                 MessageBox.Show("Type in an integer for the machine ID");
                 textID.Clear();
@@ -193,35 +194,20 @@ namespace InventorySystem_EmilyCarter
                 machineid = int.Parse(textID.Text);
             }
 
-            if (!Int32.TryParse(textMax.Text, out intTemp))
+           
+
+            Validator validator = new Validator();
+            bool isValid;
+            validator.validateMinMax(textMin, textMax, out min, out max, out isValid);
+
+            if (!isValid)
             {
-                MessageBox.Show("Please type in an integer");
-                textMax.Clear();
-                textMax.Focus();
                 return;
-
-            }
-            else
-            {
-                max = int.Parse(textMax.Text);
             }
 
-            if (!Int32.TryParse(textMin.Text, out intTemp))
+            if (!int.TryParse(textInventory.Text, out intTemp))
             {
-                MessageBox.Show("Please type in an integer");
-                textMin.Clear();
-                textMin.Focus();
-                return;
-
-            }
-            else
-            {
-                min = int.Parse(textMin.Text);
-            }
-
-            if (!Int32.TryParse(textInventory.Text, out intTemp))
-            {
-                MessageBox.Show("Please type in an integer");
+                MessageBox.Show("Please type in an integer for Inventory");
                 textInventory.Clear();
                 textInventory.Focus();
                 return;
@@ -231,9 +217,18 @@ namespace InventorySystem_EmilyCarter
             {
                 instock = int.Parse(textInventory.Text);
             }
+            if (instock < min || instock > max)
+            {
+                MessageBox.Show("Inventory must be within range");
+                textInventory.Clear();
+                textInventory.Focus();
+                return;
+
+            }
+
             if (!decimal.TryParse(textPrice.Text, out decimalTemp))
             {
-                MessageBox.Show("Please type in an integer");
+                MessageBox.Show("Please type in a decimal number for Price");
                 textPrice.Clear();
                 textPrice.Focus();
                 return;
@@ -241,25 +236,29 @@ namespace InventorySystem_EmilyCarter
             }
             else
             {
-                price = int.Parse(textPrice.Text);
+                price = decimal.Parse(textPrice.Text);
             }
 
-
-            var modifyProduct = new Product
-
-                      {
-                //ProductID = textID,
-                //Name = textName.Text,
-                //Max = textMax.Parse(textMax.Text),
-                //Min = textMin.Parse(textMin.Text),
-                //InStock = textInventory.Parse(textInventory.Text),
-                //Price = textPrice.Parse(textPrice.Text)
-            };
-            Inventory.addProduct(modifyProduct);
-
+            Inventory.UpdateProduct(
+                int.Parse(textID.Text), 
+                textName.Text, 
+                price,
+                instock, 
+                max ?? 0,
+                min ?? 0);
             this.Hide();
             InventoryMain inventoryMain = new InventoryMain();
             inventoryMain.Show();
+
+        }
+
+        private void labelModifyProd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textPrice_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

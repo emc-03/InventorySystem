@@ -1,4 +1,5 @@
-﻿using InventorySystem_EmilyCarter.model;
+﻿using InventorySystem_EmilyCarter.helper;
+using InventorySystem_EmilyCarter.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,11 +24,12 @@ namespace InventorySystem_EmilyCarter
             Random rnd = new Random();
             int partID = rnd.Next(1000);
 
-            
+
             string partName;
-            int machineid;
-            int max;
-            int min;
+            int? machineid = null;
+            string companyName;
+            int? max;
+            int? min;
             int instock;
             decimal price;
             decimal decimalTemp;
@@ -44,48 +46,53 @@ namespace InventorySystem_EmilyCarter
             {
                 partName = textName.Text;
             }
-
-            if (!Int32.TryParse(machineNameID.Text, out intTemp))
+            //TO DO fix validation for AddPart company name vs machine id
+            //machineNameID "outsourced" - takes in an int; fix conditional to account for string when 
+            // outsourced is selected and validates for int. 
+            if (radioInHouse.Checked)
             {
-                MessageBox.Show("Type in an integer for the machine ID");
-                machineNameID.Clear();
-                machineNameID.Focus();
+                if (!int.TryParse(machineNameID.Text, out intTemp))
+                {
+                    MessageBox.Show("Type in an integer for the machine ID");
+                    machineNameID.Clear();
+                    machineNameID.Focus();
+                    return;
+                }
+                else
+                {
+                    machineid = int.Parse(machineNameID.Text);
+                }
+
+            }
+            else
+            {
+                if (int.TryParse(machineNameID.Text, out intTemp))
+                {
+                    MessageBox.Show("Do not use an integer for the Company Name");
+                    machineNameID.Clear();
+                    machineNameID.Focus();
+                    return;
+                }
+                else
+                {
+                    companyName = machineNameID.Text;
+                }
+
+            }
+
+            Validator validator = new Validator();
+            bool isValid;
+            validator.validateMinMax(textMin, textMax, out min, out max, out isValid);
+
+            if (!isValid)
+            {
                 return;
             }
-            else
-            {
-                machineid = int.Parse(machineNameID.Text);
-            }
 
-            if (!Int32.TryParse(textMax.Text, out intTemp))
-            {
-                MessageBox.Show("Please type in an integer");
-                textMax.Clear();
-                textMax.Focus();
-                return;     
 
-            }
-            else
+            if (!int.TryParse(textInventory.Text, out intTemp))
             {
-                max = int.Parse(textMax.Text);
-            }
-
-            if (!Int32.TryParse(textMin.Text, out intTemp))
-            {
-                MessageBox.Show("Please type in an integer");
-                textMin.Clear();
-                textMin.Focus();
-                return;
-
-            }
-            else
-            {
-                min = int.Parse(textMin.Text);
-            }
-
-            if (!Int32.TryParse(textInventory.Text, out intTemp))
-            {
-                MessageBox.Show("Please type in an integer");
+                MessageBox.Show("Please type in an integer for Inventory");
                 textInventory.Clear();
                 textInventory.Focus();
                 return;
@@ -95,9 +102,18 @@ namespace InventorySystem_EmilyCarter
             {
                 instock = int.Parse(textInventory.Text);
             }
+            if (instock < min || instock > max)
+            {
+                MessageBox.Show("Inventory must be within range");
+                textInventory.Clear();
+                textInventory.Focus();
+                return;
+
+            }
+
             if (!decimal.TryParse(textPrice.Text, out decimalTemp))
             {
-                MessageBox.Show("Please type in an integer");
+                MessageBox.Show("Please type in a decimal for Price");
                 textPrice.Clear();
                 textPrice.Focus();
                 return;
@@ -105,7 +121,7 @@ namespace InventorySystem_EmilyCarter
             }
             else
             {
-                price = int.Parse(textPrice.Text);
+                price = decimal.Parse(textPrice.Text);
             }
 
 
@@ -121,26 +137,26 @@ namespace InventorySystem_EmilyCarter
                     PartID = partID,
                     Name = partName,
                     MachineID = machineid,
-                    Max = max,
-                    Min = min,
+                    Max = max ?? 0,
+                    Min = min ?? 0,
                     InStock = instock,
-                    Price = price   
+                    Price = price
                 };
                 Inventory.AddPart(inhousePart);
             }
             else
             {
-               
-                     var outsourced = new Outsourced
-                     {
-                         PartID = partID,
-                         Name = textName.Text,
-                         CompanyName = machineNameID.Text,
-                         Max = int.Parse(textMax.Text),
-                         Min = int.Parse(textMin.Text),
-                         InStock = int.Parse(textInventory.Text),
-                         Price = decimal.Parse(textPrice.Text)
-                     };
+
+                var outsourced = new Outsourced
+                {
+                    PartID = partID,
+                    Name = textName.Text,
+                    CompanyName = machineNameID.Text,
+                    Max = max ?? 0,
+                    Min = min ?? 0,
+                    InStock = instock,
+                    Price = price
+                };
                 Inventory.AddPart(outsourced);
             }
 
@@ -151,7 +167,7 @@ namespace InventorySystem_EmilyCarter
 
         private void partCancel_Click(object sender, EventArgs e)
         {
-           
+
             InventoryMain inventoryMain = new InventoryMain();
             inventoryMain.Show();
             this.Hide();

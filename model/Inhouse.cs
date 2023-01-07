@@ -8,13 +8,7 @@ namespace InventorySystem_EmilyCarter.model
 {
     internal class Inhouse : Part 
     {
-        public int MachineID { get; set; }
+        public int? MachineID { get; set; }
 
-        //public Inhouse(int mID)
-        //{
-        //    MachineID = mID;
-
-
-        //}
     }
 }

@@ -57,19 +57,17 @@ namespace InventorySystem_EmilyCarter
             // 
             // searchProductBox
             // 
-            this.searchProductBox.Location = new System.Drawing.Point(1050, 128);
-            this.searchProductBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchProductBox.Location = new System.Drawing.Point(735, 77);
             this.searchProductBox.Name = "searchProductBox";
-            this.searchProductBox.Size = new System.Drawing.Size(255, 31);
+            this.searchProductBox.Size = new System.Drawing.Size(180, 23);
             this.searchProductBox.TabIndex = 35;
             this.searchProductBox.TextChanged += new System.EventHandler(this.searchProductBox_TextChanged);
             // 
             // searchPartBox
             // 
-            this.searchPartBox.Location = new System.Drawing.Point(316, 128);
-            this.searchPartBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchPartBox.Location = new System.Drawing.Point(221, 77);
             this.searchPartBox.Name = "searchPartBox";
-            this.searchPartBox.Size = new System.Drawing.Size(243, 31);
+            this.searchPartBox.Size = new System.Drawing.Size(171, 23);
             this.searchPartBox.TabIndex = 34;
             this.searchPartBox.TextChanged += new System.EventHandler(this.searchPartBox_TextChanged);
             // 
@@ -77,35 +75,33 @@ namespace InventorySystem_EmilyCarter
             // 
             this.label3.AccessibleName = "SysName";
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(17, 35);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label3.Location = new System.Drawing.Point(278, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(519, 39);
+            this.label3.Size = new System.Drawing.Size(392, 31);
             this.label3.TabIndex = 33;
             this.label3.Text = "Inventory Management System";
             // 
             // dataProducts
             // 
             this.dataProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataProducts.Location = new System.Drawing.Point(766, 223);
-            this.dataProducts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataProducts.Location = new System.Drawing.Point(536, 134);
             this.dataProducts.Name = "dataProducts";
             this.dataProducts.RowHeadersWidth = 62;
             this.dataProducts.RowTemplate.Height = 25;
-            this.dataProducts.Size = new System.Drawing.Size(541, 308);
+            this.dataProducts.Size = new System.Drawing.Size(379, 185);
             this.dataProducts.TabIndex = 32;
             this.dataProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProducts_CellContentClick);
             // 
             // dataParts
             // 
             this.dataParts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataParts.Location = new System.Drawing.Point(17, 223);
-            this.dataParts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataParts.Location = new System.Drawing.Point(12, 134);
             this.dataParts.Name = "dataParts";
             this.dataParts.RowHeadersWidth = 62;
             this.dataParts.RowTemplate.Height = 25;
-            this.dataParts.Size = new System.Drawing.Size(543, 308);
+            this.dataParts.Size = new System.Drawing.Size(380, 185);
             this.dataParts.TabIndex = 31;
             this.dataParts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataParts_CellContentClick);
             this.dataParts.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.bindingComplete);
@@ -114,11 +110,11 @@ namespace InventorySystem_EmilyCarter
             // 
             this.Products.AccessibleName = "ProductsName";
             this.Products.AutoSize = true;
-            this.Products.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Products.Location = new System.Drawing.Point(766, 170);
-            this.Products.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Products.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Products.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Products.Location = new System.Drawing.Point(536, 102);
             this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(125, 35);
+            this.Products.Size = new System.Drawing.Size(88, 21);
             this.Products.TabIndex = 30;
             this.Products.Text = "Products";
             // 
@@ -127,19 +123,17 @@ namespace InventorySystem_EmilyCarter
             this.label1.AccessibleName = "PartsName";
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(-137, 172);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(-96, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 35);
+            this.label1.Size = new System.Drawing.Size(51, 23);
             this.label1.TabIndex = 29;
             this.label1.Text = "Parts";
             // 
             // DeleteParts
             // 
-            this.DeleteParts.Location = new System.Drawing.Point(441, 542);
-            this.DeleteParts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DeleteParts.Location = new System.Drawing.Point(309, 325);
             this.DeleteParts.Name = "DeleteParts";
-            this.DeleteParts.Size = new System.Drawing.Size(119, 53);
+            this.DeleteParts.Size = new System.Drawing.Size(83, 32);
             this.DeleteParts.TabIndex = 28;
             this.DeleteParts.Text = "Delete";
             this.DeleteParts.UseVisualStyleBackColor = true;
@@ -148,10 +142,9 @@ namespace InventorySystem_EmilyCarter
             // mainPartsSearch
             // 
             this.mainPartsSearch.AccessibleName = "partSearch";
-            this.mainPartsSearch.Location = new System.Drawing.Point(187, 128);
-            this.mainPartsSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.mainPartsSearch.Location = new System.Drawing.Point(131, 77);
             this.mainPartsSearch.Name = "mainPartsSearch";
-            this.mainPartsSearch.Size = new System.Drawing.Size(107, 38);
+            this.mainPartsSearch.Size = new System.Drawing.Size(75, 23);
             this.mainPartsSearch.TabIndex = 27;
             this.mainPartsSearch.Text = "Search";
             this.mainPartsSearch.UseVisualStyleBackColor = true;
@@ -160,10 +153,9 @@ namespace InventorySystem_EmilyCarter
             // mainProductSearch
             // 
             this.mainProductSearch.AccessibleName = "ProductsSearch";
-            this.mainProductSearch.Location = new System.Drawing.Point(919, 127);
-            this.mainProductSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.mainProductSearch.Location = new System.Drawing.Point(643, 76);
             this.mainProductSearch.Name = "mainProductSearch";
-            this.mainProductSearch.Size = new System.Drawing.Size(107, 38);
+            this.mainProductSearch.Size = new System.Drawing.Size(75, 23);
             this.mainProductSearch.TabIndex = 26;
             this.mainProductSearch.Text = "Search";
             this.mainProductSearch.UseVisualStyleBackColor = true;
@@ -172,22 +164,21 @@ namespace InventorySystem_EmilyCarter
             // Exit
             // 
             this.Exit.AutoEllipsis = true;
+            this.Exit.BackColor = System.Drawing.Color.LightGray;
             this.Exit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Exit.Location = new System.Drawing.Point(1209, 657);
-            this.Exit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Exit.Location = new System.Drawing.Point(846, 394);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(86, 52);
+            this.Exit.Size = new System.Drawing.Size(60, 31);
             this.Exit.TabIndex = 25;
             this.Exit.Text = "Exit";
-            this.Exit.UseVisualStyleBackColor = true;
+            this.Exit.UseVisualStyleBackColor = false;
             this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
             // DeleteProducts
             // 
-            this.DeleteProducts.Location = new System.Drawing.Point(1189, 542);
-            this.DeleteProducts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DeleteProducts.Location = new System.Drawing.Point(832, 325);
             this.DeleteProducts.Name = "DeleteProducts";
-            this.DeleteProducts.Size = new System.Drawing.Size(119, 53);
+            this.DeleteProducts.Size = new System.Drawing.Size(83, 32);
             this.DeleteProducts.TabIndex = 24;
             this.DeleteProducts.Text = "Delete";
             this.DeleteProducts.UseVisualStyleBackColor = true;
@@ -195,10 +186,9 @@ namespace InventorySystem_EmilyCarter
             // 
             // ModifyProducts
             // 
-            this.ModifyProducts.Location = new System.Drawing.Point(1061, 542);
-            this.ModifyProducts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ModifyProducts.Location = new System.Drawing.Point(743, 325);
             this.ModifyProducts.Name = "ModifyProducts";
-            this.ModifyProducts.Size = new System.Drawing.Size(119, 53);
+            this.ModifyProducts.Size = new System.Drawing.Size(83, 32);
             this.ModifyProducts.TabIndex = 23;
             this.ModifyProducts.Text = "Modify";
             this.ModifyProducts.UseVisualStyleBackColor = true;
@@ -206,10 +196,9 @@ namespace InventorySystem_EmilyCarter
             // 
             // AddProducts
             // 
-            this.AddProducts.Location = new System.Drawing.Point(934, 542);
-            this.AddProducts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AddProducts.Location = new System.Drawing.Point(654, 325);
             this.AddProducts.Name = "AddProducts";
-            this.AddProducts.Size = new System.Drawing.Size(119, 53);
+            this.AddProducts.Size = new System.Drawing.Size(83, 32);
             this.AddProducts.TabIndex = 22;
             this.AddProducts.Text = "Add";
             this.AddProducts.UseVisualStyleBackColor = true;
@@ -217,10 +206,9 @@ namespace InventorySystem_EmilyCarter
             // 
             // Modify
             // 
-            this.Modify.Location = new System.Drawing.Point(314, 542);
-            this.Modify.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Modify.Location = new System.Drawing.Point(220, 325);
             this.Modify.Name = "Modify";
-            this.Modify.Size = new System.Drawing.Size(119, 53);
+            this.Modify.Size = new System.Drawing.Size(83, 32);
             this.Modify.TabIndex = 21;
             this.Modify.Text = "Modify";
             this.Modify.UseVisualStyleBackColor = true;
@@ -228,10 +216,9 @@ namespace InventorySystem_EmilyCarter
             // 
             // AddParts
             // 
-            this.AddParts.Location = new System.Drawing.Point(187, 542);
-            this.AddParts.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AddParts.Location = new System.Drawing.Point(131, 325);
             this.AddParts.Name = "AddParts";
-            this.AddParts.Size = new System.Drawing.Size(119, 53);
+            this.AddParts.Size = new System.Drawing.Size(83, 32);
             this.AddParts.TabIndex = 20;
             this.AddParts.Text = "Add";
             this.AddParts.UseVisualStyleBackColor = true;
@@ -241,19 +228,20 @@ namespace InventorySystem_EmilyCarter
             // 
             this.Parts.AccessibleName = "PartsName";
             this.Parts.AutoSize = true;
-            this.Parts.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Parts.Location = new System.Drawing.Point(17, 170);
-            this.Parts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Parts.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Parts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Parts.Location = new System.Drawing.Point(12, 102);
             this.Parts.Name = "Parts";
-            this.Parts.Size = new System.Drawing.Size(79, 35);
+            this.Parts.Size = new System.Drawing.Size(54, 21);
             this.Parts.TabIndex = 36;
             this.Parts.Text = "Parts";
             // 
             // InventoryMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1326, 750);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(928, 450);
             this.Controls.Add(this.Parts);
             this.Controls.Add(this.searchProductBox);
             this.Controls.Add(this.searchPartBox);
@@ -271,7 +259,6 @@ namespace InventorySystem_EmilyCarter
             this.Controls.Add(this.AddProducts);
             this.Controls.Add(this.Modify);
             this.Controls.Add(this.AddParts);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "InventoryMain";
             this.Text = "Inventory Main";
             this.Load += new System.EventHandler(this.InventoryMain_Load);

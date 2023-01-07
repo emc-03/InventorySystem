@@ -58,12 +58,15 @@ namespace InventorySystem_EmilyCarter
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(765, 508);
+            this.cancelButton.BackColor = System.Drawing.Color.Silver;
+            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cancelButton.ForeColor = System.Drawing.Color.Black;
+            this.cancelButton.Location = new System.Drawing.Point(747, 508);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(57, 34);
+            this.cancelButton.Size = new System.Drawing.Size(75, 34);
             this.cancelButton.TabIndex = 0;
             this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // productSave
@@ -79,9 +82,11 @@ namespace InventorySystem_EmilyCarter
             // addID
             // 
             this.addID.AutoSize = true;
-            this.addID.Location = new System.Drawing.Point(81, 169);
+            this.addID.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addID.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.addID.Location = new System.Drawing.Point(81, 173);
             this.addID.Name = "addID";
-            this.addID.Size = new System.Drawing.Size(18, 15);
+            this.addID.Size = new System.Drawing.Size(20, 17);
             this.addID.TabIndex = 2;
             this.addID.Text = "ID";
             this.addID.Click += new System.EventHandler(this.label1_Click);
@@ -89,45 +94,55 @@ namespace InventorySystem_EmilyCarter
             // addName
             // 
             this.addName.AutoSize = true;
+            this.addName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.addName.Location = new System.Drawing.Point(63, 209);
             this.addName.Name = "addName";
-            this.addName.Size = new System.Drawing.Size(39, 15);
+            this.addName.Size = new System.Drawing.Size(43, 17);
             this.addName.TabIndex = 3;
             this.addName.Text = "Name";
             // 
             // inventLevel
             // 
             this.inventLevel.AutoSize = true;
+            this.inventLevel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inventLevel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.inventLevel.Location = new System.Drawing.Point(45, 249);
             this.inventLevel.Name = "inventLevel";
-            this.inventLevel.Size = new System.Drawing.Size(57, 15);
+            this.inventLevel.Size = new System.Drawing.Size(61, 17);
             this.inventLevel.TabIndex = 4;
             this.inventLevel.Text = "Inventory";
             // 
             // addPrice
             // 
             this.addPrice.AutoSize = true;
+            this.addPrice.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addPrice.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.addPrice.Location = new System.Drawing.Point(66, 283);
             this.addPrice.Name = "addPrice";
-            this.addPrice.Size = new System.Drawing.Size(36, 15);
+            this.addPrice.Size = new System.Drawing.Size(40, 17);
             this.addPrice.TabIndex = 5;
             this.addPrice.Text = " Price";
             // 
             // addMin
             // 
             this.addMin.AutoSize = true;
+            this.addMin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addMin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.addMin.Location = new System.Drawing.Point(24, 330);
             this.addMin.Name = "addMin";
-            this.addMin.Size = new System.Drawing.Size(28, 15);
+            this.addMin.Size = new System.Drawing.Size(30, 17);
             this.addMin.TabIndex = 6;
             this.addMin.Text = "Min";
             // 
             // addMax
             // 
             this.addMax.AutoSize = true;
+            this.addMax.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addMax.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.addMax.Location = new System.Drawing.Point(193, 330);
             this.addMax.Name = "addMax";
-            this.addMax.Size = new System.Drawing.Size(30, 15);
+            this.addMax.Size = new System.Drawing.Size(33, 17);
             this.addMax.TabIndex = 7;
             this.addMax.Text = "Max";
             // 
@@ -153,6 +168,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // addIdBox
             // 
+            this.addIdBox.BackColor = System.Drawing.Color.PapayaWhip;
             this.addIdBox.Location = new System.Drawing.Point(108, 169);
             this.addIdBox.Name = "addIdBox";
             this.addIdBox.ReadOnly = true;
@@ -162,6 +178,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // nameBox
             // 
+            this.nameBox.BackColor = System.Drawing.Color.PapayaWhip;
             this.nameBox.Location = new System.Drawing.Point(108, 209);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(155, 23);
@@ -169,6 +186,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // inventoryBox
             // 
+            this.inventoryBox.BackColor = System.Drawing.Color.PapayaWhip;
             this.inventoryBox.Location = new System.Drawing.Point(108, 249);
             this.inventoryBox.Name = "inventoryBox";
             this.inventoryBox.Size = new System.Drawing.Size(155, 23);
@@ -177,6 +195,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // priceBox
             // 
+            this.priceBox.BackColor = System.Drawing.Color.PapayaWhip;
             this.priceBox.Location = new System.Drawing.Point(108, 283);
             this.priceBox.Name = "priceBox";
             this.priceBox.Size = new System.Drawing.Size(155, 23);
@@ -184,6 +203,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // addProductMin
             // 
+            this.addProductMin.BackColor = System.Drawing.Color.PapayaWhip;
             this.addProductMin.Location = new System.Drawing.Point(58, 330);
             this.addProductMin.Name = "addProductMin";
             this.addProductMin.Size = new System.Drawing.Size(100, 23);
@@ -191,6 +211,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // addProductMax
             // 
+            this.addProductMax.BackColor = System.Drawing.Color.PapayaWhip;
             this.addProductMax.Location = new System.Drawing.Point(229, 330);
             this.addProductMax.Name = "addProductMax";
             this.addProductMax.Size = new System.Drawing.Size(100, 23);
@@ -198,7 +219,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(559, 30);
+            this.searchBox.Location = new System.Drawing.Point(559, 34);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(279, 23);
             this.searchBox.TabIndex = 21;
@@ -218,16 +239,19 @@ namespace InventorySystem_EmilyCarter
             // addProdLabel
             // 
             this.addProdLabel.AutoSize = true;
-            this.addProdLabel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.addProdLabel.Location = new System.Drawing.Point(9, 5);
+            this.addProdLabel.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addProdLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.addProdLabel.Location = new System.Drawing.Point(45, 34);
             this.addProdLabel.Name = "addProdLabel";
-            this.addProdLabel.Size = new System.Drawing.Size(457, 30);
+            this.addProdLabel.Size = new System.Drawing.Size(169, 31);
             this.addProdLabel.TabIndex = 24;
-            this.addProdLabel.Text = "Inventory Management System - Add Product";
+            this.addProdLabel.Text = "Add Product";
+            this.addProdLabel.Click += new System.EventHandler(this.addProdLabel_Click);
             // 
             // labelPartsAssociated
             // 
             this.labelPartsAssociated.AutoSize = true;
+            this.labelPartsAssociated.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelPartsAssociated.Location = new System.Drawing.Point(434, 294);
             this.labelPartsAssociated.Name = "labelPartsAssociated";
             this.labelPartsAssociated.Size = new System.Drawing.Size(186, 15);
@@ -237,6 +261,7 @@ namespace InventorySystem_EmilyCarter
             // labelAllParts
             // 
             this.labelAllParts.AutoSize = true;
+            this.labelAllParts.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelAllParts.Location = new System.Drawing.Point(434, 75);
             this.labelAllParts.Name = "labelAllParts";
             this.labelAllParts.Size = new System.Drawing.Size(50, 15);
@@ -245,7 +270,7 @@ namespace InventorySystem_EmilyCarter
             // 
             // productSearch
             // 
-            this.productSearch.Location = new System.Drawing.Point(476, 30);
+            this.productSearch.Location = new System.Drawing.Point(476, 34);
             this.productSearch.Margin = new System.Windows.Forms.Padding(2);
             this.productSearch.Name = "productSearch";
             this.productSearch.Size = new System.Drawing.Size(78, 20);
@@ -270,6 +295,7 @@ namespace InventorySystem_EmilyCarter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(848, 564);
             this.Controls.Add(this.partsAssociatedProduct);
             this.Controls.Add(this.productSearch);

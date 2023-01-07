@@ -1,4 +1,5 @@
-﻿using InventorySystem_EmilyCarter.model;
+﻿using InventorySystem_EmilyCarter.helper;
+using InventorySystem_EmilyCarter.model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -102,8 +103,8 @@ namespace InventorySystem_EmilyCarter
             addIdBox.Text = productID.ToString();
 
             string partName;
-            int max;
-            int min;
+            int? max;
+            int? min;
             int instock;
             decimal price;
             decimal decimalTemp;
@@ -121,37 +122,19 @@ namespace InventorySystem_EmilyCarter
                 partName = nameBox.Text;
             }
 
-           
+                      
+            Validator validator = new Validator();
+            bool isValid;
+            validator.validateMinMax(addProductMin, addProductMax, out min, out max, out isValid);
 
-            if (!Int32.TryParse(addProductMax.Text, out intTemp))
+            if (!isValid)
             {
-                MessageBox.Show("Please type in an integer");
-                addProductMax.Clear();
-                addProductMax.Focus();
                 return;
-
-            }
-            else
-            {
-                max = int.Parse(addProductMax.Text);
             }
 
-            if (!Int32.TryParse(addProductMin.Text, out intTemp))
+            if (!int.TryParse(inventoryBox.Text, out intTemp))
             {
-                MessageBox.Show("Please type in an integer");
-                addProductMin.Clear();
-                addProductMin.Focus();
-                return;
-
-            }
-            else
-            {
-                min = int.Parse(addProductMin.Text);
-            }
-
-            if (!Int32.TryParse(inventoryBox.Text, out intTemp))
-            {
-                MessageBox.Show("Please type in an integer");
+                MessageBox.Show("Please type in an integer for Inventory");
                 inventoryBox.Clear();
                 inventoryBox.Focus();
                 return;
@@ -161,9 +144,18 @@ namespace InventorySystem_EmilyCarter
             {
                 instock = int.Parse(inventoryBox.Text);
             }
+            if (instock < min || instock > max)
+            {
+                MessageBox.Show("Inventory must be within range");
+                inventoryBox.Clear();
+                inventoryBox.Focus();
+                return;
+
+            }
+
             if (!decimal.TryParse(priceBox.Text, out decimalTemp))
             {
-                MessageBox.Show("Please type in an integer");
+                MessageBox.Show("Please type in a decimal number for Price");
                 priceBox.Clear();
                priceBox.Focus();
                 return;
@@ -171,17 +163,17 @@ namespace InventorySystem_EmilyCarter
             }
             else
             {
-                price = int.Parse(priceBox.Text);
+                price = decimal.Parse(priceBox.Text);
             }
 
             var addNewProduct = new Product
             {
                 ProductID = productID,
                 Name = nameBox.Text,
-                Max = int.Parse(addProductMax.Text),
-                Min = int.Parse(addProductMin.Text),
-                InStock = int.Parse(inventoryBox.Text),
-                Price = decimal.Parse(priceBox.Text)
+                Max = max ?? 0,
+                Min = min ?? 0,
+                InStock = instock,
+                Price = price
             };
 
            
@@ -273,6 +265,11 @@ namespace InventorySystem_EmilyCarter
 
             var selectedPart = (Part)AllPartsGrid.CurrentRow.DataBoundItem;
             product.AddAssociatedPart(selectedPart);
+        }
+
+        private void addProdLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

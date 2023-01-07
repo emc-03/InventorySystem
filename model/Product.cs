@@ -17,30 +17,19 @@ namespace InventorySystem_EmilyCarter.model
         private int min;
         private int max;
 
-        public int ProductID { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set;}
+        public int ProductID { get { return productID; } set { productID = value; } }
+        public string Name { get { return name; } set { name = value; } }
+        public decimal Price { get { return price; } set { price = value; } }
 
-        public int InStock { get; set; }
-        public int Min { get; set; }
-        public int Max { get; set; }
-
- 
-        //public Product(int pID, string name, decimal price, int inStock, int min, int max)
-        //{
-        //    ProductID = pID;
-        //    Name = name;
-        //    Price = price.ToString();
-        //    InStock = inStock;
-        //    Min = min;
-        //    Max = max;
+        public int InStock { get { return inStock; } set { inStock = value; } }
+        public int Min { get { return min; } set { min = value; } }
+        public int Max { get { return max; } set { max = value; } }
 
 
-        //}
 
         public void Add(Product product)
         {
-        
+          
         }
 
         public void AddAssociatedPart(Part parts)
