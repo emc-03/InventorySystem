@@ -104,7 +104,7 @@ namespace InventorySystem_EmilyCarter
             }
             if (instock < min || instock > max)
             {
-                MessageBox.Show("Inventory must be within range");
+                MessageBox.Show("Inventory must be within range of Min and Max");
                 textInventory.Clear();
                 textInventory.Focus();
                 return;

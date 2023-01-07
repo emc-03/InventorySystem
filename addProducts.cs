@@ -14,17 +14,17 @@ namespace InventorySystem_EmilyCarter
 {
     public partial class AddProducts : Form
     {
-       
+
 
         Product product = new Product();
 
         public AddProducts()
         {
-         InitializeComponent();
+            InitializeComponent();
 
             AllPartsGrid.DataSource = Inventory.AllParts;
             AllPartsGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            
+
 
             AllPartsGrid.ReadOnly = true;
             AllPartsGrid.MultiSelect = false;
@@ -50,7 +50,7 @@ namespace InventorySystem_EmilyCarter
 
         private void AddProducts_Load(object sender, EventArgs e)
         {
-                     
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace InventorySystem_EmilyCarter
 
         private void deletePart_Click(object sender, EventArgs e)
         {
-           
+
 
             if (partsAssociatedProduct.RowCount == 0)
             {
@@ -122,7 +122,7 @@ namespace InventorySystem_EmilyCarter
                 partName = nameBox.Text;
             }
 
-                      
+
             Validator validator = new Validator();
             bool isValid;
             validator.validateMinMax(addProductMin, addProductMax, out min, out max, out isValid);
@@ -157,7 +157,7 @@ namespace InventorySystem_EmilyCarter
             {
                 MessageBox.Show("Please type in a decimal number for Price");
                 priceBox.Clear();
-               priceBox.Focus();
+                priceBox.Focus();
                 return;
 
             }
@@ -176,7 +176,7 @@ namespace InventorySystem_EmilyCarter
                 Price = price
             };
 
-           
+
             foreach (DataGridViewRow row in partsAssociatedProduct.Rows)
             {
                 var selectedPart = (Part)row.DataBoundItem;
@@ -188,12 +188,12 @@ namespace InventorySystem_EmilyCarter
             this.Hide();
             InventoryMain inventoryMain = new InventoryMain();
             inventoryMain.Show();
-                
+
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            searchBox.Text = " ";
+
         }
 
         private void productSearch_Click(object sender, EventArgs e)

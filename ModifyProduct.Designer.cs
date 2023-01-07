@@ -237,6 +237,7 @@ namespace InventorySystem_EmilyCarter
             this.modifySearchBox.Name = "modifySearchBox";
             this.modifySearchBox.Size = new System.Drawing.Size(222, 23);
             this.modifySearchBox.TabIndex = 16;
+            this.modifySearchBox.TextChanged += new System.EventHandler(this.modifySearchBox_TextChanged);
             // 
             // textID
             // 

@@ -43,7 +43,7 @@ namespace InventorySystem_EmilyCarter
 
                 Inhouse inhouse = (Inhouse)part;
                 textCompanyName.Text = inhouse.MachineID.ToString();
-                       }
+            }
             else
             {
                 Outsourced.Checked = true;
@@ -64,9 +64,9 @@ namespace InventorySystem_EmilyCarter
         }
 
         private void modPartSave_Click(object sender, EventArgs e)
-        { 
-          
-       
+        {
+
+
             string partName;
             int machineid;
             int? max;
@@ -101,7 +101,7 @@ namespace InventorySystem_EmilyCarter
                 machineid = int.Parse(textID.Text);
             }
 
-          
+
             Validator validator = new Validator();
             bool isValid;
             validator.validateMinMax(textMin, textMax, out min, out max, out isValid);
@@ -146,8 +146,8 @@ namespace InventorySystem_EmilyCarter
 
 
             if (radioInHouse.Checked)
-            { 
-                
+            {
+
                 if (!int.TryParse(textCompanyName.Text, out intTemp))
                 {
                     MessageBox.Show("Type in an Integer for Machine ID.");
@@ -157,7 +157,7 @@ namespace InventorySystem_EmilyCarter
                 }
                 else
                 {
-                   int machineID = int.Parse(textCompanyName.Text);
+                    int machineID = int.Parse(textCompanyName.Text);
                 }
 
                 var inhousePart = new Inhouse
@@ -170,8 +170,8 @@ namespace InventorySystem_EmilyCarter
                     InStock = instock,
                     Price = price
                 };
-                Inventory.updatePart(modPartID,inhousePart);
-           
+                Inventory.updatePart(modPartID, inhousePart);
+
             }
             else
             {
@@ -186,9 +186,9 @@ namespace InventorySystem_EmilyCarter
                     InStock = instock,
                     Price = price
                 };
-               
-                Inventory.updatePart(modPartID,outsourced);
-                    
+
+                Inventory.updatePart(modPartID, outsourced);
+
             }
             InventoryMain inventoryMain = new InventoryMain();
             inventoryMain.Show();
@@ -208,7 +208,7 @@ namespace InventorySystem_EmilyCarter
 
         private void radioInHouse_CheckedChanged(object sender, EventArgs e)
         {
-           labelCompName.Text = "Machine ID";
+            labelCompName.Text = "Machine ID";
         }
 
         private void Outsourced_CheckedChanged(object sender, EventArgs e)

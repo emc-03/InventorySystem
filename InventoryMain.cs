@@ -78,23 +78,32 @@ namespace InventorySystem_EmilyCarter
         {
             if (dataParts.RowCount == 0)
             {
-                MessageBox.Show("No Parts To Delete");
+                MessageBox.Show("No Parts To Delete", "Alert");
                 return;
             }
 
             if (!dataParts.CurrentRow.Selected)
             {
-                MessageBox.Show("Current Row Not Selected");
+                MessageBox.Show("Current Row Not Selected", "Alert");
                 return;
             }
 
             var selectedPart = (Part)dataParts.CurrentRow.DataBoundItem;
 
-            DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Important",
+            DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Alert",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (deleteResult == DialogResult.Yes)
-            { Inventory.DeletePart(selectedPart); }
+            {
+                Inventory.DeletePart(selectedPart);
+                MessageBox.Show("Part Deleted!", "Alert");
+            }
+
+            else
+            {
+                MessageBox.Show("Part not deleted!", "Alert");
+            }
+
 
 
         }
@@ -143,17 +152,23 @@ namespace InventorySystem_EmilyCarter
             int productID = dataProducts.CurrentRow.Index;
             if (selectedProduct.AssociatedParts.Count > 0)
             {
-                MessageBox.Show("Cannot Delete because a Part is assigned");
+                MessageBox.Show("Cannot Delete because a Part is assigned", "Alert");
                 return;
             }
 
             DialogResult deleteResult = MessageBox.Show("Do you want to delete ?", "Important",
              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(deleteResult == DialogResult.Yes)
-            { 
-                Inventory.RemoveProduct(productID); 
+            if (deleteResult == DialogResult.Yes)
+            {
+                Inventory.RemoveProduct(productID);
+                MessageBox.Show("Part Deleted!", "Alert");
             }
-            
+            else
+            {
+                MessageBox.Show("Part not deleted!", "Alert");
+            }
+
+
         }
 
         private void mainProductSearch_Click(object sender, EventArgs e)

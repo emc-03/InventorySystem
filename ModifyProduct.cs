@@ -21,7 +21,7 @@ namespace InventorySystem_EmilyCarter
 
         public ModifyProduct(Product product)
         {
-         
+
             InitializeComponent();
 
             modifyProductID = product.ProductID;
@@ -43,15 +43,15 @@ namespace InventorySystem_EmilyCarter
             allPartsModify.MultiSelect = false;
             allPartsModify.AllowUserToAddRows = false;
 
-           
-          
+
+
             partsAssociatedProductView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             partsAssociatedProductView.ReadOnly = true;
             partsAssociatedProductView.MultiSelect = false;
             partsAssociatedProductView.AllowUserToAddRows = false;
         }
-       
+
         private void modifySearch_Click(object sender, EventArgs e)
         {
             string textValue = modifySearchBox.Text.ToUpper();
@@ -112,7 +112,7 @@ namespace InventorySystem_EmilyCarter
             }
 
             var rowindex = partsAssociatedProductView.CurrentCell.RowIndex;
-          
+
             DialogResult removeResult = MessageBox.Show("Do you want to Remove?", "Important",
             MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -125,7 +125,7 @@ namespace InventorySystem_EmilyCarter
             {
                 MessageBox.Show("Part not Removed!");
             }
-           
+
 
         }
 
@@ -150,17 +150,15 @@ namespace InventorySystem_EmilyCarter
             }
 
             var selectedPart = (Part)allPartsModify.CurrentRow.DataBoundItem;
-           
+
             partsAssociated.Add(selectedPart);
             partsAssociatedProductView.DataSource = partsAssociated;
         }
 
         private void modifySave_Click(object sender, EventArgs e)
 
-            
-          
         {
-                                 
+
             string partName;
             int machineid;
             int? max;
@@ -194,7 +192,7 @@ namespace InventorySystem_EmilyCarter
                 machineid = int.Parse(textID.Text);
             }
 
-           
+
 
             Validator validator = new Validator();
             bool isValid;
@@ -240,10 +238,10 @@ namespace InventorySystem_EmilyCarter
             }
 
             Inventory.UpdateProduct(
-                int.Parse(textID.Text), 
-                textName.Text, 
+                int.Parse(textID.Text),
+                textName.Text,
                 price,
-                instock, 
+                instock,
                 max ?? 0,
                 min ?? 0);
             this.Hide();
@@ -258,6 +256,11 @@ namespace InventorySystem_EmilyCarter
         }
 
         private void textPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modifySearchBox_TextChanged(object sender, EventArgs e)
         {
 
         }
