@@ -1,2 +1,2 @@
 # InventorySystem-EmilyCarter
-WGU Project S.1
+C# Project S.1
