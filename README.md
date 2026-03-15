@@ -5,7 +5,8 @@
 ![Windows Forms](https://img.shields.io/badge/Windows%20Forms-0078D6?style=flat&logo=windows&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
 ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91?style=flat&logo=visualstudio&logoColor=white)
-##A C# WinForms inventory management application modernized with DevOps practices, including unit testing and CI/CD.
+
+## C# WinForms inventory management application modernized with DevOps practices, including unit testing and CI/CD.
 
 ## Tech Stack
 
