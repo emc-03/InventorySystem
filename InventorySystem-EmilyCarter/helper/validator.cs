@@ -68,27 +68,28 @@ namespace InventorySystem_EmilyCarter.helper
 
             }
         }
-    }
+    
     public bool ValidateMinMaxValues(int min, int max, out string errorMessage)
-    {
-        errorMessage = string.Empty;
+        {
+            errorMessage = string.Empty;
 
-        if(max < 0)
-        {
-            errorMessage = "Max should not be less than zero.";
-            return false;
-        }
-        if (min < 0)
-        {
-            errorMessage = "Min should not be less than zero.";
-            return false;
-        }
-        if (min > max)
-        {
-            errorMessage = "Min should be less than or equal to Max.";
-            return false;
-        }
+            if (max < 0)
+            {
+                errorMessage = "Max should not be less than zero.";
+                return false;
+            }
+            if (min < 0)
+            {
+                errorMessage = "Min should not be less than zero.";
+                return false;
+            }
+            if (min > max)
+            {
+                errorMessage = "Min should be less than or equal to Max.";
+                return false;
+            }
 
-        return true;
+            return true;
+        }
     }
 }
