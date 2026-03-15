@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InventorySystem-EmilyCarter\InventorySystem_EmilyCarter.csproj" />
+  </ItemGroup>
+
 </Project>
