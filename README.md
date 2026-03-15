@@ -1,5 +1,5 @@
-# InventorySystem-EmilyCarter
-
+# InventorySystem
+![CI](https://github.com/emc-03/InventorySystem/actions/workflows/dotnet-ci.yml/badge.svg)
 A C# WinForms inventory management application modernized with DevOps practices, including unit testing and CI/CD.
 
 ## Tech Stack
