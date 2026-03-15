@@ -1,6 +1,11 @@
 # InventorySystem
 ![CI](https://github.com/emc-03/InventorySystem/actions/workflows/dotnet-ci.yml/badge.svg)
-A C# WinForms inventory management application modernized with DevOps practices, including unit testing and CI/CD.
+![C#](https://img.shields.io/badge/C%23-%23239120?style=flat&logo=csharp&logoColor=white)
+![.NET Framework](https://img.shields.io/badge/.NET%20Framework-512BD4?style=flat&logo=dotnet&logoColor=white)
+![Windows Forms](https://img.shields.io/badge/Windows%20Forms-0078D6?style=flat&logo=windows&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91?style=flat&logo=visualstudio&logoColor=white)
+##A C# WinForms inventory management application modernized with DevOps practices, including unit testing and CI/CD.
 
 ## Tech Stack
 
