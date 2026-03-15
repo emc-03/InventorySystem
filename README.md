@@ -13,7 +13,7 @@
 - **Language:** C# (.NET 10.0)
 - **UI Framework:** WinForms
 - **Testing:** xUnit
-- **CI/CD:** GitHub Actions *(coming soon)*
+- **CI/CD:** GitHub Actions
 
 ## Version History
 
