@@ -91,5 +91,28 @@ namespace InventorySystem_EmilyCarter.helper
 
             return true;
         }
+
+    public bool ValidateMachineID(string machineIDText, out int? machineID, out string errorMessage)
+        {
+            machineID = null;
+            errorMessage = string.Empty;
+            if (string.IsNullOrWhiteSpace(machineIDText))
+            {
+                errorMessage = "Machine ID cannot be empty.";
+                return false;
+            }
+            if (!int.TryParse(machineIDText, out int parsedMachineID))
+            {
+                errorMessage = "Machine ID must be a valid integer.";
+                return false;
+            }
+            if (parsedMachineID < 0)
+            {
+                errorMessage = "Machine ID should not be less than zero.";
+                return false;
+            }
+            machineID = parsedMachineID;
+            return true;
+        }
     }
 }
