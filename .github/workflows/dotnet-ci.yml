@@ -1,0 +1,29 @@
+name: .NET CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore InventorySystem-EmilyCarter.sln
+
+      - name: Build
+        run: dotnet build InventorySystem-EmilyCarter.sln --no-restore
+
+      - name: Run tests
+        run: dotnet test InventorySystem.Tests/InventorySystem.Tests.csproj --no-build --verbosity normal
