@@ -86,5 +86,18 @@ namespace InventorySystem.Tests
             Assert.False(result);
             Assert.Contains("Min should not be less than zero", errorMessage);
         }
+        //Test Machine ID 1 - Valid Machine ID should return True 
+        [Fact]
+        public void ValidateMachineID_ValidInput_ReturnsTrue()
+        {
+            // Arrange
+            string machineIDText = "123";
+            // Act
+            bool result = _validator.ValidateMachineID(machineIDText, out int? machineID, out string errorMessage);
+            // Assert
+            Assert.True(result);
+            Assert.Equal(123, machineID);
+            Assert.Equal(string.Empty, errorMessage);
+        }
     }
 }

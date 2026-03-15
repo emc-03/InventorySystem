@@ -114,5 +114,6 @@ namespace InventorySystem_EmilyCarter.helper
             machineID = parsedMachineID;
             return true;
         }
+
     }
 }
