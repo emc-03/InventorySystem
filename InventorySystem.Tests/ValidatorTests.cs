@@ -114,5 +114,20 @@ namespace InventorySystem.Tests
             Assert.Null(machineID);
             Assert.Contains("Machine ID cannot be empty", errorMessage);
         }
+
+        // Test Machine ID 3 - Non-integer input should return False
+        [Fact]
+        
+        public void ValidateMachineID_NonInteger_ReturnsFalse()
+        {
+            // Arrange
+            string machineIDText = "abc";
+            // Act
+            bool result = _validator.ValidateMachineID(machineIDText, out int? machineID, out string errorMessage);
+            // Assert
+            Assert.False(result);
+            Assert.Null(machineID);
+            Assert.Contains("Machine ID must be a valid integer", errorMessage);
+        }
     }
 }
