@@ -79,8 +79,8 @@ dotnet test InventorySystem.Tests/InventorySystem.Tests.csproj
 
 ## What I Learned
 
-- Separation of concerns — extracting pure logic from WinForms-coupled classes to make them unit testable
-- xUnit testing fundamentals — Arrange/Act/Assert pattern
+- Separation of concerns, extracting pure logic from WinForms-coupled classes to make them unit testable
+- xUnit testing fundamentals, specifically the Arrange/Act/Assert pattern
 - Professional solution structure with a separate test project
 - Framework migration from .NET 5.0 to .NET 10.0
-- Git workflow — feature branches, pull requests, and clean commit history
+- Git workflow, foundational feature branches, pull requests, and clean commit history
