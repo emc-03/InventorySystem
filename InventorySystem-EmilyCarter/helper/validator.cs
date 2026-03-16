@@ -121,5 +121,38 @@ namespace InventorySystem_EmilyCarter.helper
             return true;
         }
 
+        public bool ValidateCompanyName(string companyNameInput, out string? validatedName, out string errorMessage)
+        {
+            validatedName = null;
+            errorMessage = string.Empty;
+            if (string.IsNullOrWhiteSpace(companyNameInput))
+            {
+                errorMessage = "Company Name cannot be empty.";
+                return false;
+            }
+
+            companyNameInput = companyNameInput.Trim(); // trimps whitespace from the beginning and end of the string
+
+            if (companyNameInput.Any(char.IsDigit))
+            {
+                errorMessage = "Company Name should not contain numbers.";
+                return false;
+            }
+            
+            if (companyNameInput.Length > 100)
+            {
+                errorMessage = "Company Name should not exceed 100 characters.";
+                return false;
+            }
+            if (companyNameInput.Length < 5)
+            {
+                errorMessage = "Company Name should be at least 5 characters long.";
+                return false;
+            }
+            validatedName = companyNameInput;
+            return true;
+            
+        }
+
     }
 }

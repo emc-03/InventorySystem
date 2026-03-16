@@ -144,5 +144,94 @@ namespace InventorySystem.Tests
             Assert.Null(machineID);
             Assert.Contains("Machine ID should not contain spaces", errorMessage);
         }
+
+        // Test Company Name 1 - Valid Company Name should return True
+        [Fact]
+
+        public void ValidateCompanyName_ValidInput_ReturnsTrue()
+        {
+            // Arrange
+            string companyNameInput = "Tech Solutions";
+            // Act
+            bool result = _validator.ValidateCompanyName(companyNameInput, out string? validatedName, out string errorMessage);
+            // Assert
+            Assert.True(result);
+            Assert.Equal("Tech Solutions", validatedName);
+            Assert.Equal(string.Empty, errorMessage);
+        }
+
+        // Test Company Name 2 - Null input should return False
+
+        [Fact]
+
+        public void ValidateCompanyName_NullInput_ReturnsFalse()
+        {
+            // Arrange
+            string companyNameInput = null;
+            // Act
+            bool result = _validator.ValidateCompanyName(companyNameInput, out string? validatedName, out string errorMessage);
+            // Assert
+            Assert.False(result);
+            Assert.Null(validatedName);
+            Assert.Contains("Company Name cannot be empty", errorMessage);
+        }
+
+        // Test Company Name 3 - Does not contain numbers should return True
+        [Fact]
+
+        public void ValidateCompanyName_ContainsNumbers_ReturnsFalse()
+        {
+            // Arrange
+            string companyNameInput = "Tech Solutions 123";
+            // Act
+            bool result = _validator.ValidateCompanyName(companyNameInput, out string? validatedName, out string errorMessage);
+            // Assert
+            Assert.False(result);
+            Assert.Null(validatedName);
+            Assert.Contains("Company Name should not contain numbers", errorMessage);
+        }
+        // Test Company Name 4 - Exceeding maximum length should return False
+        [Fact]
+        public void ValidateCompanyName_ExceedsMaxLength_ReturnsFalse()
+        {
+            // Arrange
+            string companyNameInput = new string('A', 101); // Assuming max length is 100 characters
+            // Act
+            bool result = _validator.ValidateCompanyName(companyNameInput, out string? validatedName, out string errorMessage);
+            // Assert
+            Assert.False(result);
+            Assert.Null(validatedName);
+            Assert.Contains("Company Name should not exceed 100 characters", errorMessage);
+        }
+        // Test Company Name 5 - Minimum length 5 characters should return True
+        [Fact]
+
+        public void ValidateCompanyName_BelowMinLength_ReturnsFalse()
+        {
+            // Arrange
+            string companyNameInput = "Tech"; // Assuming minimum length is 5 characters
+            // Act
+            bool result = _validator.ValidateCompanyName(companyNameInput, out string? validatedName, out string errorMessage);
+            // Assert
+            Assert.False(result);
+            Assert.Null(validatedName);
+            Assert.Contains("Company Name should be at least 5 characters long", errorMessage);
+        }
+
+
+        // Test Company Name 6 - Happy path with leading/trailing whitespace should return True and trim the whitespace
+        [Fact]
+
+        public void ValidateCompanyName_ValidInputWithWhitespace_ReturnsTrueAndTrims()
+        {
+            // Arrange
+            string companyNameInput = "  Tech Solutions  ";
+            // Act
+            bool result = _validator.ValidateCompanyName(companyNameInput, out string? validatedName, out string errorMessage);
+            // Assert
+            Assert.True(result);
+            Assert.Equal("Tech Solutions", validatedName); // Expecting trimmed result
+            Assert.Equal(string.Empty, errorMessage);
+        }
     }
 }
