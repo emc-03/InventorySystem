@@ -82,6 +82,11 @@ dotnet test InventorySystem.Tests/InventorySystem.Tests.csproj
 | `ValidateMinMaxValues_MinGreaterThanMax_ReturnsFalse` | Min greater than Max fails | ✅ Passing |
 | `ValidateMinMaxValues_NegativeMax_ReturnsFalse` | Negative Max fails | ✅ Passing |
 | `ValidateMinMaxValues_NegativeMin_ReturnsFalse` | Negative Min fails | ✅ Passing |
+| `ValidateMachineID_ValidInput_ReturnsTrue` | Contains Valid String | ✅ Passing |
+| `ValidateMachineID_EmptyInput_ReturnsFalse` | Is not null | ✅ Passing |
+| `ValidateMachineID_NegativeInput_ReturnsFalse` | Does not contain negative int | ✅ Passing |
+| `ValidateMachineID_WhitespaceInput_ReturnsFalse` | Does not contain whitespace | ✅ Passing |
+
 
 ## What I Learned
 
