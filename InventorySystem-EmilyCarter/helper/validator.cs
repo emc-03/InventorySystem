@@ -101,8 +101,14 @@ namespace InventorySystem_EmilyCarter.helper
                 errorMessage = "Machine ID cannot be empty.";
                 return false;
             }
+            if (machineIDText.Any(char.IsWhiteSpace))
+            {
+                errorMessage = "Machine ID should not contain spaces.";
+                return false;
+            }
             if (!int.TryParse(machineIDText, out int parsedMachineID))
             {
+                
                 errorMessage = "Machine ID must be a valid integer.";
                 return false;
             }

@@ -117,7 +117,7 @@ namespace InventorySystem.Tests
 
         // Test Machine ID 3 - Non-integer input should return False
         [Fact]
-        
+
         public void ValidateMachineID_NonInteger_ReturnsFalse()
         {
             // Arrange
@@ -128,6 +128,21 @@ namespace InventorySystem.Tests
             Assert.False(result);
             Assert.Null(machineID);
             Assert.Contains("Machine ID must be a valid integer", errorMessage);
+        }
+
+        // Test Machine ID 4 - Whitespace input should return False
+        [Theory]
+        [InlineData(" 123")] //leading whitespace
+        [InlineData("123 ")] //trailing whitespace
+        [InlineData("12 3")] //internal whitespace
+        public void ValidateMachineID_WhitespaceInput_ReturnsFalse(string machineIDText)
+        {
+            // Act
+            bool result = _validator.ValidateMachineID(machineIDText, out int? machineID, out string errorMessage);
+            // Assert
+            Assert.False(result);
+            Assert.Null(machineID);
+            Assert.Contains("Machine ID should not contain spaces", errorMessage);
         }
     }
 }
