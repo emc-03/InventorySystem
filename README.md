@@ -86,6 +86,12 @@ dotnet test InventorySystem.Tests/InventorySystem.Tests.csproj
 | `ValidateMachineID_EmptyInput_ReturnsFalse` | Is not null | ✅ Passing |
 | `ValidateMachineID_NegativeInput_ReturnsFalse` | Does not contain negative int | ✅ Passing |
 | `ValidateMachineID_WhitespaceInput_ReturnsFalse` | Does not contain whitespace | ✅ Passing |
+| `ValidateCompanyName_ValidInput_ReturnsTrue` |Company Name Matches Input/Output | ✅ Passing |
+| `ValidateCompanyName_NullInput_ReturnsFalse` | Is not null | ✅ Passing |
+| `ValidateCompanyName_ContainsNumbers_ReturnsFalse` | Does not contain integers | ✅ Passing |
+| `ValidateCompanyName_ExceedsMaxLength_ReturnsFalse` | Input does not exceed max length | ✅ Passing |
+| ` ValidateCompanyName_BelowMinLength_ReturnsFalse` | Input below Min Length | ✅ Passing |
+| `ValidateCompanyName_ValidInputWithWhitespace_ReturnsTrueAndTrims` | Happy Path and returns trims | ✅ Passing |
 
 
 ## What I Learned
