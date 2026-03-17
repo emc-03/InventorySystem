@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,10 +15,11 @@ namespace InventorySystem_EmilyCarter.model
         public static BindingList<Part> AllParts = new BindingList<Part>();
         private static int ProductID;
         // TODO adjust price to decimal
-        
-        public static void addDataProducts() {
 
-                            
+        public static void addDataProducts()
+        {
+
+
             Product product1 = new Product
             {
                 ProductID = 1,
@@ -40,6 +42,7 @@ namespace InventorySystem_EmilyCarter.model
 
             Product product3 = new Product
             {
+
                 ProductID = 3,
                 Name = "Sedan",
                 Price = 7,
@@ -74,17 +77,18 @@ namespace InventorySystem_EmilyCarter.model
             Products.Add(product5);
         }
 
-        public static void addDataParts() {
+        public static void addDataParts()
+        {
             //TODO Rename parts to make easier to read
 
             Part part1 = new Inhouse
             {
                 PartID = 1,
-                Name = "Wheel", 
-                MachineID = 22, 
+                Name = "Wheel",
+                MachineID = 22,
                 InStock = 5,
-                Max = 20, 
-                Min = 0, 
+                Max = 20,
+                Min = 0,
                 Price = 2
             };
             Part part2 = new Inhouse
@@ -98,15 +102,16 @@ namespace InventorySystem_EmilyCarter.model
                 Price = 4
             };
 
-            Part part3 = new Inhouse { 
-            
-                 PartID = 3,
-                 Name = "Window",
-                 MachineID = 44,
-                 InStock = 15,
-                 Max = 55,
-                 Min = 0,
-                 Price = 6
+            Part part3 = new Inhouse
+            {
+
+                PartID = 3,
+                Name = "Window",
+                MachineID = 44,
+                InStock = 15,
+                Max = 55,
+                Min = 0,
+                Price = 6
 
             };
 
@@ -188,7 +193,7 @@ namespace InventorySystem_EmilyCarter.model
                 Price = 13
             };
 
-      
+
             Inventory.AllParts.Add(part1);
             Inventory.AllParts.Add(part2);
             Inventory.AllParts.Add(part3);
@@ -201,14 +206,9 @@ namespace InventorySystem_EmilyCarter.model
             Inventory.AllParts.Add(outSourced4);
             Inventory.AllParts.Add(outSourced5);
 
+                    }
 
-
-
-
-
-        }
-
-        public static void addProduct(Product addProduct) 
+        public static void addProduct(Product addProduct)
         {
             Products.Add(addProduct);
         }
@@ -217,7 +217,7 @@ namespace InventorySystem_EmilyCarter.model
         {
             Products.RemoveAt(index);
             return true;
-            
+
         }
         public static Product LookupProduct(int productID)
         {
@@ -232,7 +232,7 @@ namespace InventorySystem_EmilyCarter.model
             return null;
         }
 
-      public static void UpdateProduct(int productID, string productName, decimal price, int inStock, int max, int min)
+        public static void UpdateProduct(int productID, string productName, decimal price, int inStock, int max, int min)
         {
             for (int i = 0; i < Products.Count; i++)
             {
@@ -248,8 +248,8 @@ namespace InventorySystem_EmilyCarter.model
         }
 
         // Part Methods 
-      public static void AddPart(Part part)
-        { 
+        public static void AddPart(Part part)
+        {
             Inventory.AllParts.Add(part);
         }
 
@@ -259,7 +259,7 @@ namespace InventorySystem_EmilyCarter.model
             return true;
         }
 
-       public static Part LookupPart(int lookPart)
+        public static Part LookupPart(int lookPart)
         {
             foreach (Part part in AllParts)
             {
@@ -271,17 +271,17 @@ namespace InventorySystem_EmilyCarter.model
 
             return null;
         }
-       
+
         public static void updatePart(int partID, Part part)
-                     
+
         {
             for (int i = 0; i < AllParts.Count; i++)
             {
                 if (AllParts[i].PartID == partID)
                 {
-                  AllParts[i] = part;
+                    AllParts[i] = part;
                 }
-             
+
             }
         }
 
