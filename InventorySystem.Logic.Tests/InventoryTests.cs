@@ -1,5 +1,5 @@
-using InventorySystem_EmilyCarter.helper;
-using InventorySystem_EmilyCarter.model;
+using InventorySystem.Logic.helper;
+using InventorySystem.Logic.model;
 using Xunit;
 
 namespace InventorySystem.Tests

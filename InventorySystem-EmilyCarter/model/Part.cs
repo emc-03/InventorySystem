@@ -9,8 +9,6 @@ namespace InventorySystem_EmilyCarter.model
    public abstract class Part
     {
 
-    
-
         public int PartID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; } 
