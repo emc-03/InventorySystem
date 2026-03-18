@@ -255,8 +255,7 @@ namespace InventorySystem_EmilyCarter.model
 
         public static bool DeletePart(Part deletePart)
         {
-            AllParts.Remove(deletePart);
-            return true;
+             return AllParts.Remove(deletePart);
         }
 
         public static Part LookupPart(int lookPart)

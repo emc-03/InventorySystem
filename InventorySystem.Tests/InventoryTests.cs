@@ -84,6 +84,32 @@ namespace InventorySystem.Tests
             // Assert
             Assert.Null(result);
         }
+        // Deleting an existing part by its ID should remove the part from the inventory and return true
+        [Fact]
+
+        public void DeletePart_ExistingPart_ReturnsTrueAndRemovesPart()
+        {
+            // Arrange
+            Part part = new Inhouse
+            {
+                PartID = 1,
+                Name = "Test Part",
+                Price = 10.99m,
+                InStock = 5,
+                Min = 1,
+                Max = 10,
+                MachineID = 123
+            };
+            Inventory.AddPart(part);
+            // Act
+            bool result = Inventory.DeletePart(part);
+            // Assert
+            Assert.True(result);
+            Assert.Empty(Inventory.AllParts);
+
+
+
+        }
     }
 
-    }
+}
