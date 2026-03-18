@@ -5,6 +5,7 @@
 ![Windows Forms](https://img.shields.io/badge/Windows%20Forms-0078D6?style=flat&logo=windows&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
 ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91?style=flat&logo=visualstudio&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-ready-blue?logo=docker)
 
 ## C# WinForms inventory management application modernized with DevOps practices, including unit testing and CI/CD.
 
@@ -14,6 +15,7 @@
 - **UI Framework:** WinForms
 - **Testing:** xUnit
 - **CI/CD:** GitHub Actions
+- - **Containerization:** Docker 
 
 ## Version History
 
@@ -33,6 +35,10 @@ tooling, GitHub Actions runners, and current xUnit test frameworks.
 - Updated `<TargetFramework>` in `.csproj` from `net5.0-windows` to `net10.0-windows`
 - Resolved NuGet package compatibility issues introduced by the framework change
 - Added a separate xUnit test project targeting `net10.0-windows` to match the main project
+
+- The WinForms UI layer is not containerized (Windows-only dependency)
+- `InventorySystem.Logic` contains the cross-platform business logic
+- All 21 tests pass inside the container on Linux
 
 ## Project Structure
 ```
@@ -61,6 +67,20 @@ InventorySystem/
 └── InventorySystem.Tests/                 # xUnit test project
     ├── ValidatorTests.cs                  # Unit tests for validator logic
     └── InventorySystem.Tests.csproj
+```
+
+## Docker
+
+This project includes a Docker container for running the logic layer and tests in a cross-platform environment.
+
+### Build
+```bash
+docker build -t inventorysystem:2.0 .
+```
+
+### Run Tests
+```bash
+docker run --rm inventorysystem:2.0 dotnet test InventorySystem.Logic.Tests/InventorySystem.Logic.Tests.csproj --verbosity normal
 ```
 
 ## Running the App
@@ -95,9 +115,15 @@ dotnet test InventorySystem.Tests/InventorySystem.Tests.csproj
 
 
 ## What I Learned
-
-- Separation of concerns, extracting pure logic from WinForms-coupled classes to make them unit testable
-- xUnit testing fundamentals, specifically the Arrange/Act/Assert pattern
+- Separation of concerns — extracting pure logic from WinForms-coupled classes to make them unit testable
+- xUnit testing fundamentals — Arrange/Act/Assert pattern
 - Professional solution structure with a separate test project
 - Framework migration from .NET 5.0 to .NET 10.0
-- Git workflow, foundational feature branches, pull requests, and clean commit history
+- Git workflow — feature branches, pull requests, and clean commit history
+- `[Theory]` vs `[Fact]` — when to test multiple inputs with a single test method
+- Docker containerization — why WinForms cannot be containerized and how to isolate the logic layer
+- Cross-platform development — the difference between `net10.0-windows` and `net10.0`
+- Class libraries — separating reusable logic into a `.dll` for use across projects
+- `.dockerignore` — keeping containers lean by excluding build artifacts
+- Static state in tests — why shared collections cause test pollution and how constructors solve it
+- Real bug fixing — improving `DeletePart` to return accurate success/failure results
