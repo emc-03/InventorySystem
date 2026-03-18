@@ -15,7 +15,7 @@
 - **UI Framework:** WinForms
 - **Testing:** xUnit
 - **CI/CD:** GitHub Actions
-- - **Containerization:** Docker 
+- **Containerization:** Docker 
 
 ## Version History
 
