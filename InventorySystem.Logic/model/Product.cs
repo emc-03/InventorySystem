@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace InventorySystem_EmilyCarter.model
+namespace InventorySystem.Logic.model
 {
     public class Product
     {
-        public BindingList<Part> AssociatedParts = new BindingList<Part>();
+        public List<Part> AssociatedParts = new List<Part>();
         private int productID;
         private string name;
         private decimal price;
@@ -25,8 +22,7 @@ namespace InventorySystem_EmilyCarter.model
         public int Min { get { return min; } set { min = value; } }
         public int Max { get { return max; } set { max = value; } }
 
-
-
+                        
         public void AddAssociatedPart(Part parts)
         {
             AssociatedParts.Add(parts);
@@ -34,7 +30,7 @@ namespace InventorySystem_EmilyCarter.model
 
         public bool RemovedAssociatedPart(int partID)
         {
-           
+
             Part part = LookupAssociatedPart(partID);
 
             if (part == null)
@@ -46,11 +42,12 @@ namespace InventorySystem_EmilyCarter.model
                 AssociatedParts.Remove(part);
                 return true;
             }
-           
-         
+
+
         }
 
-       public Part LookupAssociatedPart(int partID) {
+        public Part LookupAssociatedPart(int partID)
+        {
 
             foreach (Part part in AssociatedParts)
             {
@@ -59,13 +56,11 @@ namespace InventorySystem_EmilyCarter.model
                     return part;
                 }
             }
-           
+
             return null;
-       }
+        }
 
 
 
     }
-     
-    }
-
+}
